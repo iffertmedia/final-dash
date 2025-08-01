@@ -8,7 +8,7 @@ import { CategoryFilter } from '../components/CategoryFilter';
 import { fetchProductsWithFallback } from '../services/googleSheets';
 import { cn } from '../utils/cn';
 
-const { width } = Dimensions.get('window');
+const width = window.innerWidth;
 const cardWidth = (width - 48) / 2; // 2 cards per row with 16px padding on sides and 16px gap
 
 export const DashboardScreen: React.FC = () => {
