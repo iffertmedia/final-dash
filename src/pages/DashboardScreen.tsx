@@ -12,7 +12,6 @@ const width = window.innerWidth;
 const cardWidth = (width - 48) / 2; // 2 cards per row with 16px padding on sides and 16px gap
 
 export const DashboardScreen: React.FC = () => {
-  const insets = useSafeAreaInsets();
   const { 
     products, 
     setProducts, 
@@ -21,8 +20,6 @@ export const DashboardScreen: React.FC = () => {
     filteredProducts,
     adminspans
   } = useProductStore();
-
-  const [refreshing, setRefreshing] = React.useState(false);
 
   const headerspan = adminspans.find(t => t.key === 'dashboard-header')?.content || 'TikTok Shop Affiliate Dashboard';
   const subtitlespan = adminspans.find(t => t.key === 'dashboard-subtitle')?.content || 'Tap products to get higher commissions';
@@ -43,16 +40,21 @@ export const DashboardScreen: React.FC = () => {
     loadProducts();
   }, [products.length, setProducts]);
 
-  const onRefresh = React.useCallback(async () => {
-    setRefreshing(true);
-    try {
-      const fetchedProducts = await fetchProductsWithFallback();
-      setProducts(fetchedProducts);
-    } catch (error) {
-      console.error('Refresh failed:', error);
-    }
-    setRefreshing(false);
-  }, [setProducts]);
+const handleRefresh = async () => {
+  try {
+    const fetchedProducts = await fetchProductsWithFallback();
+    setProducts(fetchedProducts);
+  } catch (error) {
+    console.error('Refresh failed:', error);
+  }
+};
+
+  <button
+  onClick={handleRefresh}
+  className="mt-2 px-4 py-2 bg-black text-white rounded"
+>
+  Refresh Products
+</button>
 
   const renderProduct = ({ item, index }: { item: typeof mockProducts[0], index: number }) => (
     <ProductCard 
@@ -72,7 +74,7 @@ export const DashboardScreen: React.FC = () => {
       {/* Header */}
       <div 
         className="bg-white px-4 pb-4 border-b border-gray-100"
-        style={{ paddingTop: insets.top + 4 }}
+        style={{ paddingTop: 16 }}
       >
         {/* Title */}
         <span className="text-2xl font-bold text-gray-900 mb-2">
@@ -84,14 +86,14 @@ export const DashboardScreen: React.FC = () => {
 
         {/* Search Bar */}
         <div className="flex-row items-center bg-gray-100 rounded-lg px-3 py-2">
-          <Ionicons name="search" size={20} color="#6b7280" />
+          <span role="img" aria-label="search">🔍</span>
           <spanInput
-            placeholder="Search products..."
-            value={searchQuery}
-            onChangespan={setSearchQuery}
-            className="flex-1 ml-2 text-base"
-            placeholderspanColor="#9ca3af"
-          />
+  placeholder="Search products..."
+  value={searchQuery}
+  onChangespan={setSearchQuery}
+  className="flex-1 ml-2 text-base"
+  placeholderspanColor="#9ca3af"
+/>
           {searchQuery.length > 0 && (
             <Ionicons 
               name="close-circle" 
@@ -107,31 +109,16 @@ export const DashboardScreen: React.FC = () => {
       <CategoryFilter />
 
       {/* Products Grid */}
-      <FlatList
-        data={displayedProducts}
-        renderItem={renderProduct}
-        keyExtractor={(item) => item.id}
-        numColumns={2}
-        columnWrapperStyle={{ paddingHorizontal: 16 }}
-        contentContainerStyle={{ paddingTop: 16, paddingBottom: insets.bottom + 100 }}
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-        ListFooterComponent={() => <LogoFooter />}
-        ListEmptyComponent={() => (
-          <div className="flex-1 items-center justify-center py-16">
-            <Ionicons name="search" size={48} color="#d1d5db" />
-            <span className="text-gray-500 text-lg font-medium mt-4">
-              No products found
-            </span>
-            <span className="text-gray-400 text-center mt-2 px-8">
-              Try adjusting your search or category filter
-            </span>
-          </div>
-        )}
-      />
-    </div>
+<div className="grid grid-cols-2 gap-4 px-4 pt-4 pb-[100px]">
+  {displayedProducts.map((product, index) => (
+    <ProductCard
+      key={product.id}
+      product={product}
+      style={{ width: cardWidth }}
+      className={cn(index % 2 === 0 ? "mr-2" : "ml-2")}
+    />
+  ))}
+</div>
   );
 };
 
