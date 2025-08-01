@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Campaign } from '../types/product';
 import { cn } from '../utils/cn';
-import { Ionicons } from 'react-native-vector-icons'; // adjust if you’re using expo or another lib
+import { IoChevronForward, IoStar } from 'react-icons/io5';
 
 interface CampaignCardProps {
   campaign: Campaign;
@@ -49,12 +49,12 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
       {/* Campaign Info */}
       <div className="p-4">
         {/* Campaign Title with Rating */}
-        <div className="flex-row items-center justify-between mb-2">
+        <div className="flex items-center justify-between mb-2">
           <span className="font-bold text-base text-gray-900 flex-1">
             {campaign.title}
           </span>
-          <div className="flex-row items-center ml-2">
-            <Ionicons name="star" size={14} color="#fbbf24" />
+          <div className="flex items-center ml-2">
+            <Iostar size={14} color="#fbbf24" />
             <span className="text-sm text-gray-600 ml-1">
               {campaign.averageRating}
             </span>
@@ -85,9 +85,9 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
           className="bg-black rounded-lg px-3 py-3 flex-row items-center justify-center cursor-pointer"
         >
           <span className="text-white font-medium text-sm mr-2">
-            div Campaign
+            View Campaign
           </span>
-          <Ionicons name="chevron-forward" size={16} color="white" />
+          <IoChevronForward size={16} color="white" />
         </div>
       </div>
     </div>
