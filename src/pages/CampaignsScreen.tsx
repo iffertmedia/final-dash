@@ -234,3 +234,5 @@ export const CampaignsScreen: React.FC<CampaignsScreenProps> = ({ navigation }) 
     </div>
   );
 };
+
+export default CampaignsScreen;
