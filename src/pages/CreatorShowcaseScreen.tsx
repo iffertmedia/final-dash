@@ -132,3 +132,5 @@ export const CreatorShowcaseScreen: React.FC<CreatorShowcaseScreenProps> = ({ na
     </div>
   );
 };
+
+export default CreatorShowcaseScreen;
