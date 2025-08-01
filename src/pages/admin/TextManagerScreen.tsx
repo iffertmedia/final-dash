@@ -158,3 +158,5 @@ export const spanManagerScreen: React.FC = () => {
     </div>
   );
 };
+
+export default TextManagerScreen;
