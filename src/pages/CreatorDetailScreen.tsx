@@ -425,3 +425,5 @@ export const CreatorDetailScreen: React.FC<CreatorDetailScreenProps> = ({
     </div>
   );
 };
+
+export default CreatorDetailScreen;
