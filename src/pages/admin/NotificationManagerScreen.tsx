@@ -193,3 +193,5 @@ export const NotificationManagerScreen: React.FC = () => {
     </Scrolldiv>
   );
 };
+
+export default NotificationManagerScreen;
