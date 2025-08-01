@@ -53,3 +53,5 @@ export default function HomeScreen() {
     </div>
   );
 }
+
+export default HomeScreen;
