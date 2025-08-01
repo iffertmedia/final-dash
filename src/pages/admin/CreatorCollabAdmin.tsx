@@ -109,3 +109,5 @@ export const CreatorCollabAdmin: React.FC<{ navigation: any }> = ({ navigation }
     </div>
   );
 };
+
+export default CreatorCollabAdmin;
