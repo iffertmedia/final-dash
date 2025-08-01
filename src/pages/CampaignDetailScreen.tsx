@@ -462,3 +462,5 @@ export const CampaignDetailScreen: React.FC<CampaignDetailScreenProps> = ({
     </div>
   );
 };
+
+export default CampaignDetailScreen;
