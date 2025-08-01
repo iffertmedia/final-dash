@@ -134,3 +134,5 @@ export const DashboardScreen: React.FC = () => {
     </div>
   );
 };
+
+export default DashboardScreen;
