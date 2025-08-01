@@ -16,3 +16,5 @@ export const AdminScreen: React.FC<AdminScreenProps> = ({ navigation }) => {
     </AuthGuard>
   );
 };
+
+export default AdminScreen;
