@@ -126,3 +126,5 @@ export const CampaignDetailsAdmin: React.FC<{ navigation: any }> = ({ navigation
     </div>
   );
 };
+
+export default CampaignDetailsAdmin;
