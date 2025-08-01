@@ -124,3 +124,5 @@ export const DiscordScreen: React.FC<DiscordScreenProps> = ({ navigation }) => {
     </div>
   );
 };
+
+export default DiscordScreen;
