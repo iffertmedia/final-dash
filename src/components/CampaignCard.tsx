@@ -3,7 +3,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Campaign } from '../types/product';
 import { cn } from '../utils/cn';
-import Image from 'next/image';
 import { Ionicons } from 'react-native-vector-icons'; // adjust if you’re using expo or another lib
 
 interface CampaignCardProps {
@@ -21,7 +20,7 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
     <div onClick={handlePress} className={`p-4 border rounded ${className}`}>
       {/* Banner Image */}
       <div className="relative">
-        <Image
+        <img
           src={campaign.bannerImage}
           alt="Banner"
           className="w-full h-32 object-cover"
