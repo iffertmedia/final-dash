@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Product, ProductCategory, Creator, AdminText, Campaign, FeaturedCreator, Notification, ExclusiveCampaign } from '../types/product';
 import { fetchCampaignsFromSpreadsheet } from '../services/campaignDataService';
 
@@ -343,7 +342,7 @@ export const useProductStore = create<ProductStore>()(
     }),
     {
       name: 'product-store',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => (typeof window !== 'undefined' ? localStorage : undefined)),
       partialize: (state) => ({
         adminTexts: state.adminTexts,
         notifications: state.notifications,
