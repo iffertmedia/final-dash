@@ -13,9 +13,8 @@ interface CampaignCardProps {
 
 export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, className }) => {
   const handlePress = () => {
-    onPress(campaign    </div>
+    onPress(campaign);
   );
-  };
 
   return (
     <div onClick={() => navigate(`/campaign/${props.campaign.id}`)} className="cursor-pointer">
