@@ -1,6 +1,6 @@
 import { FaUser } from 'react-icons/fa';
-import React
-import { useNavigate } from 'react-router-dom'; from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // [converted from react-native] import { div, span, Image, Pressable } from 'react-native';
 import { Campaign } from '../types/product';
 import { cn } from '../utils/cn';
