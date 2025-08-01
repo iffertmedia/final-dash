@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { User, LoginCredentials, AuthState } from '../types/auth';
 
 // Default admin credentials - in production, these would be stored securely
@@ -98,7 +97,7 @@ export const useAuthStore = create<AuthStore>()(
     }),
     {
       name: 'auth-store',
-      storage: createJSONStorage(() => AsyncStorage),
+      storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         user: state.user
       })
