@@ -14,6 +14,7 @@ export default function Layout() {
         </nav>
       </aside>
       <main className="flex-1 p-6 bg-gray-50">
+        <div className="mb-4 text-red-500 font-bold">Layout is rendering ✅</div>
         <Outlet />
       </main>
     </div>
