@@ -1,10 +1,10 @@
 import { FaUser } from 'react-icons/fa';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// [converted from react-native] import { div, span, Image, Pressable } from 'react-native';
 import { Campaign } from '../types/product';
 import { cn } from '../utils/cn';
 import Image from 'next/image';
+import { Ionicons } from 'react-native-vector-icons'; // adjust if you’re using expo or another lib
 
 interface CampaignCardProps {
   campaign: Campaign;
@@ -19,38 +19,33 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
 
   return (
     <div onClick={handlePress} className={`p-4 border rounded ${className}`}>
-      <h2>{campaign.title}</h2>
-      <p>{campaign.description}</p>
-    </div>
-  );
-};
       {/* Banner Image */}
       <div className="relative">
-  <Image
-    src={campaign.bannerImage}
-    alt="Banner"
-    className="w-full h-32 object-cover"
-    width={600}
-    height={128}
-  />
-</div>
-        
-        {/* Status Badge */}
-        <div className={cn(
-          "absolute top-3 right-3 px-3 py-1 rounded-full",
-          campaign.isActive ? "bg-green-500" : "bg-gray-500"
-        )}>
-          <span className="text-white text-xs font-medium">
-            {campaign.isActive ? 'Active' : 'Ended'}
-          </span>
-        </div>
+        <Image
+          src={campaign.bannerImage}
+          alt="Banner"
+          className="w-full h-32 object-cover"
+          width={600}
+          height={128}
+        />
+      </div>
 
-        {/* Commission Badge */}
-        <div className="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full">
-          <span className="text-white text-xs font-bold">
-            {campaign.totalCommission}%
-          </span>
-        </div>
+      {/* Status Badge */}
+      <div className={cn(
+        "absolute top-3 right-3 px-3 py-1 rounded-full",
+        campaign.isActive ? "bg-green-500" : "bg-gray-500"
+      )}>
+        <span className="text-white text-xs font-medium">
+          {campaign.isActive ? 'Active' : 'Ended'}
+        </span>
+      </div>
+
+      {/* Commission Badge */}
+      <div className="absolute top-3 left-3 bg-black/80 px-3 py-1 rounded-full">
+        <span className="text-white text-xs font-bold">
+          {campaign.totalCommission}%
+        </span>
+      </div>
 
       {/* Campaign Info */}
       <div className="p-4">
@@ -78,7 +73,7 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
             <span className="text-xs font-medium text-blue-800 mb-1">
               Special Offers:
             </span>
-            <span className="text-xs text-blue-700" numberOfLines={2}>
+            <span className="text-xs text-blue-700">
               {campaign.specialOffers[0]}
               {campaign.specialOffers.length > 1 && ` +${campaign.specialOffers.length - 1} more`}
             </span>
@@ -94,6 +89,8 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
             div Campaign
           </span>
           <Ionicons name="chevron-forward" size={16} color="white" />
+        </div>
       </div>
+    </div>
   );
 };
