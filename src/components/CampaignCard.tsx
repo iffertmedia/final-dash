@@ -51,13 +51,12 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
             {campaign.totalCommission}%
           </span>
         </div>
-      </div>
 
       {/* Campaign Info */}
       <div className="p-4">
         {/* Campaign Title with Rating */}
         <div className="flex-row items-center justify-between mb-2">
-          <span className="font-bold text-base text-gray-900 flex-1" numberOfLines={2}>
+          <span className="font-bold text-base text-gray-900 flex-1">
             {campaign.title}
           </span>
           <div className="flex-row items-center ml-2">
@@ -69,7 +68,7 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
         </div>
 
         {/* Description */}
-        <span className="text-sm text-gray-600 mb-3" numberOfLines={2}>
+        <span className="text-sm text-gray-600 mb-3">
           {campaign.description}
         </span>
 
