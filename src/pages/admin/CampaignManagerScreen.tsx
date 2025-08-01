@@ -511,3 +511,5 @@ export const CampaignManagerScreen: React.FC = () => {
     </div>
   );
 };
+
+export default CampaignManagerScreen;
