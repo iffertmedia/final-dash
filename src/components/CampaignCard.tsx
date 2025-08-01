@@ -86,16 +86,14 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, c
         )}
 
         {/* CTA Button */}
-        <Pressable
-          onPress={handlePress}
-          className="bg-black rounded-lg py-3 flex-row items-center justify-center"
+        <div
+          onClick={handlePress}
+          className="bg-black rounded-lg px-3 py-3 flex-row items-center justify-center cursor-pointer"
         >
           <span className="text-white font-medium text-sm mr-2">
             div Campaign
           </span>
           <Ionicons name="chevron-forward" size={16} color="white" />
-        </Pressable>
       </div>
-    </Pressable>
   );
 };
