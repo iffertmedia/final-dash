@@ -187,3 +187,5 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     </div>
   );
 };
+
+export default LoginScreen;
