@@ -114,3 +114,5 @@ export const ExclusiveCampaignsScreen: React.FC<ExclusiveCampaignsScreenProps> =
     </div>
   );
 };
+
+export default ExclusiveCampaignsScreen;
