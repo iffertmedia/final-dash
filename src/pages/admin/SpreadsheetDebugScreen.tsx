@@ -112,3 +112,5 @@ ${campaigns.map((c, i) => `${i+1}. ${c.title} (${c.sellerName})`).join('\n')}
     </Scrolldiv>
   );
 };
+
+export default SpreadsheetDebugScreen;
