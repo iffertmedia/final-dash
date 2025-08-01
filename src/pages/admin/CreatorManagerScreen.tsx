@@ -417,3 +417,5 @@ export const CreatorManagerScreen: React.FC = () => {
     </div>
   );
 };
+
+export default CreatorManagerScreen;
