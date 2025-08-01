@@ -201,3 +201,5 @@ export const SettingsManagerScreen: React.FC = () => {
     </Scrolldiv>
   );
 };
+
+export default SettingsManagerScreen;
