@@ -352,3 +352,5 @@ export const ProductManagerScreen: React.FC = () => {
     </div>
   );
 };
+
+export default ProductManagerScreen;
