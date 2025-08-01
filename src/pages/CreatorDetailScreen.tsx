@@ -1,7 +1,6 @@
 import { FaUser } from 'react-icons/fa';
 import React from 'react';
 // [converted from react-native] import { div, span, Scrolldiv, Image, Dimensions, Pressable, Linking, Alert } from 'react-native';
-import { Webdiv } from 'react-native-webview';
 import { Creator } from '../types/product';
 
 interface CreatorDetailScreenProps {
@@ -396,32 +395,14 @@ export const CreatorDetailScreen: React.FC<CreatorDetailScreenProps> = ({
             {creator.exampleVideos.map((video, index) => (
               <div key={video.id} className="mx-4 mb-6">
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                  <Webdiv
-                    source={{ html: generateInlineVideoHTML(video.url) }}
-                    style={{ 
-                      width: screenWidth - 32, 
-                      height: 580,
-                      backgroundColor: '#000',
-                      borderRadius: 12
-                    }}
-                    scrollEnabled={false}
-                    showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    allowsInlineMediaPlayback={true}
-                    mediaPlaybackRequiresUserAction={false}
-                    mixedContentMode="compatibility"
-                    originWhitelist={['*']}
-                    allowsFullscreenVideo={true}
-                    onLoadStart={() => console.log(`🎥 Webdiv ${index + 1} loading started`)}
-                    onLoadEnd={() => console.log(`🎥 Webdiv ${index + 1} loading finished`)}
-                    onError={(error) => {
-                      console.error(`🎥 Video ${index + 1} embed error:`, error);
-                    }}
-                    onMessage={(event) => {
-                      console.log(`🎥 Webdiv ${index + 1} message:`, event.nativeEvent.data);
-                    }}
+                  <iframe
+                    src={`https://www.tiktok.com/embed/v2/${video.id}?lang=en`}
+                    width="100%"
+                    height="580"
+                    style={{ border: 'none', borderRadius: '12px' }}
+                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    title={`TikTok video ${index + 1}`}
                   />
                 </div>
               </div>
