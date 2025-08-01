@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // [converted from react-native] import { div, span, Image, Pressable } from 'react-native';
 import { Campaign } from '../types/product';
 import { cn } from '../utils/cn';
+import Image from 'next/image';
 
 interface CampaignCardProps {
   campaign: Campaign;
@@ -14,21 +15,25 @@ interface CampaignCardProps {
 export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onPress, className }) => {
   const handlePress = () => {
     onPress(campaign);
-  );
+  };
 
   return (
-    <div onClick={() => navigate(`/campaign/${props.campaign.id}`)} className="cursor-pointer">
-      <Pressable
-      onPress={handlePress}
-      className={cn("bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden", className)}
-    >
+    <div onClick={handlePress} className={`p-4 border rounded ${className}`}>
+      <h2>{campaign.title}</h2>
+      <p>{campaign.description}</p>
+    </div>
+  );
+};
       {/* Banner Image */}
       <div className="relative">
-        <Image
-          source={{ uri: campaign.bannerImage }}
-          className="w-full h-32"
-          resizeMode="cover"
-        />
+  <Image
+    src={campaign.bannerImage}
+    alt="Banner"
+    className="w-full h-32 object-cover"
+    width={600}
+    height={128}
+  />
+</div>
         
         {/* Status Badge */}
         <div className={cn(
